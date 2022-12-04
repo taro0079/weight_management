@@ -20,6 +20,10 @@ func main() {
 			"message": "hello world",
 		})
 	})
+	engine.GET("/users", func(c *gin.Context) {
+		users := database.GetUsers()
+		c.HTML(200, "users.html", gin.H{"users": users})
+	})
 	engine.POST("/users", func(c *gin.Context) {
 		db.Create(&database.User{Name: "test", Age: 20, Birthday: time.Date(1999, 1, 1, 0, 0, 0, 0, time.Local)})
 	})

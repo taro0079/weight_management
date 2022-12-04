@@ -11,3 +11,10 @@ type User struct {
 	Age      int
 	Birthday time.Time
 }
+
+func GetUsers() []User {
+    db := DbOpen()
+    var users []User
+    db.Find(&users)
+    return users
+}
